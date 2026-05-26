@@ -90,6 +90,25 @@ vim.lsp.start({
 })
 ```
 
+### Emacs (Eglot, built in on Emacs 29+)
+
+Eglot dispatches on major mode, so give `.circ` files one, then point Eglot
+at the server:
+
+```elisp
+(define-derived-mode circ-mode prog-mode "circ"
+  (setq-local comment-start "// "))
+(add-to-list 'auto-mode-alist '("\\.circ\\'" . circ-mode))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(circ-mode . ("node" "/abs/path/circ-lsp/out/server.js" "--stdio"
+                              :initializationOptions (:compilerPath "circ-compile")))))
+```
+
+Then run `M-x eglot` in a `.circ` buffer, or add `eglot-ensure` to
+`circ-mode-hook` to start it automatically.
+
 ## Contract
 
 Request (stdin): `{ "root_path": "<abs>", "overlays": { "<abs>": "<text>" } }`
