@@ -1,0 +1,70 @@
+{
+  "name": "circ-lsp",
+  "displayName": "circ Language Server",
+  "description": "Diagnostics and navigation for .circ digital-logic source files.",
+  "version": "0.0.2",
+  "license": "GPL-3.0-or-later",
+  "author": "Jefferson Oliveira <jeffersonmourak@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffersonmourak/circ-lsp.git"
+  },
+  "private": true,
+  "publisher": "circ-compiler",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:circ"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "circ",
+        "aliases": [
+          "circ"
+        ],
+        "extensions": [
+          ".circ"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "circ",
+        "scopeName": "source.circ",
+        "path": "./syntaxes/circ.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "circ",
+      "properties": {
+        "circ.compilerPath": {
+          "type": "string",
+          "default": "circ-compile",
+          "description": "Path to the circ-compile binary from the circ-compiler repo. Defaults to 'circ-compile' on PATH; set an absolute path (or one relative to the workspace root) if it is not on PATH."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "typecheck": "tsc --noEmit -p ./"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.84.0",
+    "typescript": "^5.3.0"
+  }
+}
