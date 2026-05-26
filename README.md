@@ -62,7 +62,7 @@ Open this folder and press F5 (Run Extension) for a sandboxed dev host, or
 package and install it:
 
 ```sh
-npx @vscode/vsce package --allow-missing-repository -o circ-lsp.vsix
+npx @vscode/vsce package -o circ-lsp.vsix
 cursor --install-extension circ-lsp.vsix --force    # or: code --install-extension ...
 ```
 

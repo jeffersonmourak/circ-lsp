@@ -53,6 +53,7 @@
     }
   },
   "scripts": {
+    "vscode:prepublish": "npm run build",
     "build": "tsc -p ./",
     "watch": "tsc -w -p ./",
     "typecheck": "tsc --noEmit -p ./"

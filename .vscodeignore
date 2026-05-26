@@ -5,3 +5,5 @@ tsconfig.json
 .gitignore
 zz_*
 *.vsix
+HANDOFF.md
+docs/**
